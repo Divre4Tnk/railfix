@@ -31,7 +31,7 @@
 
         <div class="card">
             <div class="card-body">
-                <form action="{{ route('location.update', $location->id) }}" method="post" id="form-tambah">
+                <form action="{{ route('location.update', $location) }}" method="post" id="form-tambah">
                     @csrf
                     @method('put')
                     <div>

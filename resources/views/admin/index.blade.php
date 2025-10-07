@@ -20,13 +20,6 @@
             <div class="col-md-12">
                 <h4 class="mb-3">Data Admin</h4>
 
-                @if (session('success'))
-                    <div class="alert alert-success alert-dismissible" role="alert">
-                        {!! session('success') !!}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
-
                 <div class="card">
                     <div class="card-header ">
                         <form action="{{ route('admin.index') }}" method="get">
@@ -75,12 +68,12 @@
                                                     class="btn btn-sm btn-warning" title="Edit">
                                                     <i class="ti ti-edit"></i>
                                                 </a>
-                                                <form action="{{ route('admin.destroy', $user->id) }}" method="POST"
-                                                    style="display:inline-block;" title="Hapus">
+                                                <form id="delete-form-{{ $user->id }}" action="{{ route('admin.destroy', $user->id) }}" method="POST"
+                                                    class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger"
-                                                        onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">
+                                                    <button type="button" class="btn btn-sm btn-danger"
+                                                        onclick="confirmDelete('delete-form-{{ $user->id }}')">
                                                         <i class="ti ti-trash"></i>
                                                     </button>
                                                 </form>

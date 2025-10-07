@@ -37,7 +37,7 @@ class LocationController extends Controller
 
         Location::create($request->only('name'));
 
-        return redirect()->route('location.index')->with('success', 'Location created successfully.');
+        return redirect()->route('location.index')->with('success', 'Data lokasi berhasil ditambahkan.');
     }
 
     public function edit(Location $location)
@@ -53,13 +53,13 @@ class LocationController extends Controller
 
         $location->update($request->only('name'));
 
-        return redirect()->route('location.index')->with('success', 'Location updated successfully.');
+        return redirect()->route('location.index')->with('success', 'Data lokasi berhasil diperbarui');
     }
 
     public function destroy(Location $location)
     {
         $location->delete();
 
-        return redirect()->route('location.index')->with('success', 'Location deleted successfully.');
+        return redirect()->route('location.index')->with('success', 'Data lokasi berhasil dihapus.');
     }
 }

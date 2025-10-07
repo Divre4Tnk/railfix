@@ -49,25 +49,35 @@
 
                             </div>
 
-                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    {{ $errors->first() }}
+                            @error('login')
+                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                    {{ $message }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
                                 </div>
-                            @endif
+                            @enderror
 
                             <form method="POST" action="{{ route('login_store') }}">
                                 @csrf
 
                                 <div class="mb-3">
                                     <label for="username" class="form-label">Username</label>
-                                    <input type="text" name="username" id="username" class="form-control"
-                                        placeholder="Enter your username" required autofocus>
+                                    <input type="text" name="username" id="username"
+                                        class="form-control @error('username') is-invalid @enderror"
+                                        placeholder="Enter your username" autofocus>
+                                    @error('username')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="password" class="form-label">Password</label>
-                                    <input type="password" name="password" id="password" class="form-control"
-                                        placeholder="Enter your password" required>
+                                    <input type="password" name="password" id="password"
+                                        class="form-control @error('password') is-invalid @enderror"
+                                        placeholder="Enter your password">
+                                    @error('password')
+                                        <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
                                 </div>
 
                                 <div class="form-check mb-3">

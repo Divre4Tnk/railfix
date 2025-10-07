@@ -20,6 +20,6 @@ class NotificationController extends Controller
             'is_read' => true
         ]);
         
-        return redirect()->route('inventories.edit', $notification->inventory_id);
+        return redirect()->route('inventories.show', $notification->inventory);
     }
 }

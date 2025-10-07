@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Inventory extends Model
 {
@@ -19,6 +20,7 @@ class Inventory extends Model
         'name',
         'location_id',
         'serial_number',
+        'inventory_number',
         'date_in',
         'date_out',
         'pic',
@@ -37,13 +39,12 @@ class Inventory extends Model
         return $this->belongsTo(Location::class);
     }
 
-    protected static function boot()
+    protected static function booted()
     {
-        parent::boot();
-
         static::creating(function ($model) {
-            $last = self::orderBy('code', 'desc')->first();
+            $model->uuid = (string) Str::uuid();
 
+            $last = self::orderBy('code', 'desc')->first();
             $number = 1;
 
             if ($last && $last->code && preg_match('/WS(\d+)/', $last->code, $matches)) {
@@ -57,5 +58,10 @@ class Inventory extends Model
     public function notifications()
     {
         return $this->hasMany(Notification::class);
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'uuid';
     }
 }

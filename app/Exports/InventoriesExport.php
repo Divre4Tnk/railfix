@@ -15,19 +15,26 @@ class InventoriesExport implements FromView, WithEvents, WithStyles
 {
     protected $start;
     protected $end;
+    protected $location_id;
 
-    public function __construct($start, $end)
+    public function __construct($start, $end, $location_id = null)
     {
         $this->start = $start;
         $this->end = $end;
+        $this->location_id = $location_id;
     }
 
     public function view(): View
     {
         $query = Inventory::with('location');
 
-        if ($this->start != null || $this->end != null) {
-            $query->whereDate('date_in', '>=', $this->start)->whereDate('date_in', '<=', $this->end);
+        if ($this->start != null && $this->end != null) {
+            $query->whereDate('date_in', '>=', $this->start)
+                  ->whereDate('date_in', '<=', $this->end);
+        }
+
+        if ($this->location_id != null) {
+            $query->where('location_id', $this->location_id);
         }
 
         $query = $query->latest()->get();
@@ -35,7 +42,7 @@ class InventoriesExport implements FromView, WithEvents, WithStyles
         return view('inventory.export', [
             'inventories' => $query,
             'start' => $this->start ? Carbon::parse($this->start) : null,
-            'end' => $this->end ? Carbon::parse($this->end) : null,
+            'end'   => $this->end ? Carbon::parse($this->end) : null,
         ]);
     }
 

@@ -34,7 +34,7 @@ class AdminController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        return redirect()->route('admin.index')->with('success', 'Admin created successfully.');
+        return redirect()->route('admin.index')->with('success', 'Admin baru berhasil ditambahkan.');
     }
 
     public function edit($id)
@@ -56,12 +56,12 @@ class AdminController extends Controller
 
         $user->save();
 
-        return redirect()->route('admin.index')->with('success', 'Admin updated successfully.');
+        return redirect()->route('admin.index')->with('success', 'Data admin berhasil diperbarui.');
     }
 
     public function destroy($id)
     {
         User::findOrFail($id)->delete();
-        return redirect()->route('admin.index')->with('success', 'Admin delete successfully.');
+        return redirect()->route('admin.index')->with('success', 'Data admin berhasil dihapus.');
     }
 }

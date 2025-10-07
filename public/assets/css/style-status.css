@@ -1,0 +1,434 @@
+:root {
+    --primary: #167AD9;
+    --accent: #10b981;
+    --returned: #10b981;
+    --broken: #ef4444;
+    --muted: #64748b;
+    --primary-light: #54A1EB;
+}
+
+body {
+    background-color: #f0f0f0ea;
+    font-family: 'Inter', sans-serif;
+}
+
+.form-select {
+    margin-right: 10px; /* atur sesuai kebutuhan */
+}
+
+.navbar {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, .05);
+}
+
+.hero {
+    height: 430px;
+    border-radius: 0 0 60px 60px !important;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    padding: 0;
+}
+
+.carousel-item {
+    height: 430px;
+    position: relative;
+}
+
+.carousel-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.527);
+    z-index: 1;
+}
+
+.carousel-item img {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.carousel-caption {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+}
+
+.text-primary-light {
+    color: var(--primary-light) !important;
+}
+
+.search-box {
+    background: #fff;
+    border-radius: 1.25rem;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.07), 0 4px 6px -4px rgba(0, 0, 0, 0.07);
+    padding: 2rem 2.5rem;
+    border: 1px solid var(--border-color);
+    margin-top: -120px;
+    position: relative;
+    z-index: 10;
+}
+
+main.container {
+    padding-bottom: 4rem;
+}
+
+
+.status-badge {
+    padding: .5rem 1rem;
+    border-radius: 50px;
+    font-size: .85rem;
+    font-weight: 600;
+}
+
+.result-card,
+.not-found {
+    background: #fff;
+    border-radius: 1rem;
+    margin-top: 2rem;
+}
+
+.result-header {
+    background: linear-gradient(135deg, var(--primary), #818cf8);
+    color: #fff;
+    padding: 1.25rem 1.5rem;
+    border-radius: 1rem 1rem 0 0;
+}
+
+.detail-item {
+    padding: 1rem 1.25rem;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.detail-label {
+    font-size: .85rem;
+    color: var(--muted);
+}
+
+.not-found {
+    text-align: center;
+    padding: 2.5rem;
+}
+
+.not-found i {
+    font-size: 3rem;
+    color: #94a3b8;
+    margin-bottom: 1rem;
+}
+
+footer {
+    margin-top: 3rem;
+    color: var(--muted);
+    font-size: .9rem;
+    background-color: transparent;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    font-weight: 500;
+}
+
+.progress-tracker-wrapper {
+    margin: 1.5rem 0;
+}
+
+.progress-tracker {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-bottom: 1rem;
+    padding: 0 10px;
+}
+
+.progress-tracker::before {
+    content: '';
+    position: absolute;
+    top: 16px;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: #e9ecef;
+    z-index: 1;
+}
+
+.progress-step {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    width: 100%;
+}
+
+.step-icon {
+    width: 33px;
+    height: 33px;
+    border-radius: 50%;
+    background: #e9ecef;
+    color: #6c757d;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 5px;
+    position: relative;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.step-label {
+    font-size: 0.75rem;
+    color: #6c757d;
+    font-weight: 500;
+    margin-top: 3px;
+}
+
+.step-date {
+    font-size: 0.65rem;
+    color: #adb5bd;
+    margin-top: 2px;
+    display: block;
+}
+
+.progress-step.active .step-icon,
+.progress-step.completed .step-icon {
+    background: var(--primary);
+    color: white;
+    box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.2);
+}
+
+.progress-step.completed .step-icon::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='20 6 9 17 4 12'%3E%3C/polyline%3E%3C/svg%3E");
+    background-size: contain;
+    bottom: -3px;
+    right: -3px;
+    border-radius: 50%;
+    background-color: var(--accent);
+}
+
+.progress-step.active .step-label {
+    color: var(--primary);
+    font-weight: 600;
+}
+
+.progress-step.completed .step-label {
+    color: var(--accent);
+}
+
+.status-info {
+    border-radius: 8px;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.status-info .current-status {
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.status-info .current-status i {
+    font-size: 1rem;
+    vertical-align: middle;
+}
+
+
+.current-status {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.3rem 0.8rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.status-received {
+    background: rgba(67, 97, 238, 0.1);
+    color: var(--primary);
+}
+
+.status-progress {
+    background: rgba(255, 193, 7, 0.1);
+    color: #fd7e14;
+}
+
+.status-done {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--accent);
+}
+
+.status-returned {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--returned);
+}
+
+.status-broken {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--broken);
+}
+
+.progress-step.returned .step-icon,
+.progress-step.broken .step-icon {
+    background: #e9ecef;
+    color: #6c757d;
+}
+
+.progress-step.returned.active .step-icon {
+    background: var(--returned);
+    color: white;
+    box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.2);
+}
+
+.progress-step.broken.active .step-icon {
+    background: var(--broken);
+    color: white;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+}
+
+.progress-step.returned.active .step-label {
+    color: var(--returned);
+}
+
+.progress-step.broken.active .step-label {
+    color: var(--broken);
+}
+
+.progress-bar {
+    position: absolute;
+    top: 16px;
+    left: 0;
+    height: 3px;
+    background: var(--primary);
+    z-index: 2;
+    transition: width 0.5s ease;
+    overflow: hidden;
+}
+
+.progress-bar::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.5);
+    animation: fillLine 1.3s linear infinite;
+}
+
+@keyframes fillLine {
+    0% {
+        width: 0%;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
+
+@keyframes pulse-blue {
+    0% {
+        box-shadow: 0 0 0 0 rgba(67, 97, 238, 0.6);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(67, 97, 238, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(67, 97, 238, 0);
+    }
+}
+
+@keyframes pulse-green {
+    0% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.6);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+}
+
+@keyframes pulse-red {
+    0% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+    }
+}
+
+.progress-step.active .step-icon {
+    animation: pulse-blue 1.2s infinite;
+}
+
+.progress-step.returned.active .step-icon {
+    animation: pulse-green 1.2s infinite;
+}
+
+.progress-step.broken.active .step-icon {
+    animation: pulse-red 1.2s infinite;
+}
+
+@media (max-width: 768px) {
+
+    .hero,
+    .carousel-item {
+        height: 300px;
+        border-radius: 0 0 20px 20px !important;
+    }
+
+    .carousel-caption h1 {
+        font-size: 1.5rem;
+    }
+
+    .carousel-caption p {
+        font-size: 0.9rem;
+    }
+
+    .search-box {
+        margin-top: -115px;
+        padding: 1.5rem;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .search-box h4 {
+        font-size: 1.25rem;
+    }
+
+    .step-icon {
+        width: 30px;
+        height: 30px;
+        font-size: 0.8rem;
+    }
+
+    .step-label {
+        font-size: 0.65rem;
+    }
+
+    .step-date {
+        font-size: 0.6rem;
+    }
+
+    .progress-tracker::before,
+    .progress-bar {
+        top: 15px;
+    }
+
+    .detail-item {
+        padding: 0.75rem 1rem;
+    }
+}

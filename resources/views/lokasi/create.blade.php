@@ -37,7 +37,7 @@
                         <label class="form-label">Nama Lokasi <span class="text-danger">*</span></label>
                         <input type="search" class="form-control @error('name') is-invalid @enderror"
                             placeholder="Ex: Stasiun Rejosari" aria-label="Nama" aria-describedby="button-addon2"
-                            name="name" value="">
+                            name="name" value="{{ old('name') }}">
                         @error('name')
                             <small class="text-danger mt-1" role="alert">
                                 {{ $message }}

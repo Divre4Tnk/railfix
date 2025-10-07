@@ -19,12 +19,6 @@
         <div class="row pt-2">
             <div class="col-md-12">
                 <h4 class="mb-3">Data Lokasi</h4>
-                @if (session('success'))
-                    <div class="alert alert-success alert-dismissible" role="alert">
-                        {!! session('success') !!}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endif
                 <div class="card">
                     <div class="card-header ">
                         <form action="" method="get">
@@ -52,6 +46,7 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama Lokasi</th>
+                                        <th>Slug</th>
                                         <th class="text-end">Aksi</th>
                                     </tr>
                                 </thead>
@@ -60,18 +55,19 @@
                                         <tr>
                                             <td>{{ ($locations->currentPage() - 1) * $locations->perPage() + $loop->iteration }}</td>
                                             <td>{{ $location->name }}</td>
+                                            <td>{{ $location->slug }}</td>
                                             <td class="text-end">
-                                                <a href="{{ route('location.edit', $location->id) }}"
+                                                <a href="{{ route('location.edit', $location) }}"
                                                     class="btn btn-sm btn-warning">
                                                     <i class="ti ti-edit"></i>
                                                 </a>
 
-                                                <form action="{{ route('location.destroy', $location->id) }}" method="POST"
-                                                    style="display:inline-block;">
+                                                <form id="delete-form-{{ $location->id }}" action="{{ route('location.destroy', $location) }}" method="POST"
+                                                    class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
-                                                    <button type="submit" class="btn btn-sm btn-danger"
-                                                        onclick="return confirm('Apakah anda yakin ingin menghapus data ini?')">
+                                                    <button type="button" class="btn btn-sm btn-danger"
+                                                        onclick="confirmDelete('delete-form-{{ $location->id }}')">
                                                         <i class="ti ti-trash"></i>
                                                     </button>
                                                 </form>

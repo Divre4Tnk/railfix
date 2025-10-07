@@ -25,6 +25,7 @@ class InventoryRequest extends FormRequest
             'name' => 'required|string|max:255',
             'location_id' => 'required|exists:locations,id',
             'serial_number' => 'required|string',
+            'inventory_number' => 'nullable|string',
             'date_in' => 'required|date',
             'date_out' => 'nullable|date|after_or_equal:date_in',
             'pic' => 'nullable|string',

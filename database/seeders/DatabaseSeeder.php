@@ -24,13 +24,13 @@ class DatabaseSeeder extends Seeder
             'password' => 'AdwinTnk4@7890',
         ]);
 
-        // $this->call([
-        //     InventorySeeder::class,
-        //     LocationSeeder::class,
-        // ]);
+        $this->call([
+            InventorySeeder::class,
+            LocationSeeder::class,
+        ]);
 
-        // Inventory::factory(50)->recycle([
-        //     Location::all()
-        // ])->create();
+        Inventory::factory(50)->recycle([
+            Location::all()
+        ])->create();
     }
 }

@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('locations', function (Blueprint $table) {
-            $table->id();
-            $table->string('slug');
-            $table->string('name');
-            $table->timestamps();
+        Schema::table('inventories', function (Blueprint $table) {
+            $table->string('inventory_number')->nullable()->after('serial_number');
         });
     }
 
@@ -24,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('locations');
+        Schema::table('inventories', function (Blueprint $table) {
+            $table->dropColumn('inventory_number');
+        });
     }
 };

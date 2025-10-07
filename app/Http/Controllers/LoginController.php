@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
@@ -12,13 +13,8 @@ class LoginController extends Controller
         return view('login');
     }
 
-    public function store(Request $request)
+    public function store(LoginRequest $request)
     {
-        $request->validate([
-            'username' => 'required',
-            'password' => 'required',
-        ]);
-
         $credentials = $request->only('username', 'password');
 
         if (Auth::attempt($credentials, $request->filled('remember'))) {
@@ -27,7 +23,9 @@ class LoginController extends Controller
             return redirect()->route('dashboard.index');
         }
 
-        return back()->with('error', 'Username atau password salah');
+        return back()
+            ->withErrors(['login' => 'Username atau password salah.'])
+            ->withInput($request->only('username'));
     }
 
     public function logouts(Request $request)
@@ -38,6 +36,6 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect()->route('login');
+        return redirect()->route('find.public');
     }
 }

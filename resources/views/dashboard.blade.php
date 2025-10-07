@@ -53,7 +53,7 @@
                 <div class="col-12 col-sm-6 col-lg-3 mb-1">
                     <div class="card shadow-sm border-0">
                         <div class="card-body d-flex align-items-center">
-                            <div class="d-flex align-items-center justify-content-center bg-info text-white me-3"
+                            <div class="d-flex align-items-center justify-content-center bg-primary text-white me-3"
                                 style="width: 60px; height: 60px; border-radius: 15%">
                                 <i class="ti ti-download" style="font-size: 32px;"></i>
                             </div>

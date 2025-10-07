@@ -24,7 +24,8 @@
                     <div class="card-header d-flex justify-content-center">
                         <form action="" method="GET">
                             <div class="input-group" style="max-width: 400px;">
-                                <input type="text" name="q" class="form-control" value="{{ request('q') }}" placeholder="Kode Unik Barang">
+                                <input type="text" name="q" class="form-control" value="{{ request('q') }}"
+                                    placeholder="Kode Unik Barang">
                                 <button class="btn btn-outline-primary" type="submit"><i class="ti ti-search"></i></button>
                             </div>
                         </form>
@@ -53,40 +54,62 @@
                                                     </tr>
                                                     <tr>
                                                         <td class="text-start py-1">Tanggal Masuk</td>
-                                                        <td class="text-end py-1">{{ $result->date_in->format('d-m-Y') }}</td>
+                                                        <td class="text-end py-1">{{ $result->date_in->format('d-m-Y') }}
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-start py-1">Tanggal Keluar</td>
-                                                        <td class="text-end py-1">{{ $result->date_out ? $result->date_out->format('d-m-Y') : '-' }}</td>
+                                                        <td class="text-end py-1">
+                                                            {{ $result->date_out ? $result->date_out->format('d-m-Y') : '-' }}
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-start py-1">Penanggung Jawab</td>
-                                                        <td class="text-end py-1">{{ $result->pic ? $result->pic : '-' }}</td>
+                                                        <td class="text-end py-1">{{ $result->pic ? $result->pic : '-' }}
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-start py-1">Nomor Telepon</td>
-                                                        <td class="text-end py-1">{{ $result->phone ? $result->phone : '-' }}</td>
+                                                        <td class="text-end py-1">
+                                                            {{ $result->phone ? $result->phone : '-' }}</td>
                                                     </tr>
                                                     <tr>
                                                         <td class="text-start pt-1">Status</td>
                                                         <td class="text-end pt-1">
                                                             @php
                                                                 $status = [
-                                                                    'received' => ['text' => 'Masuk', 'color' => 'secondary'],
-                                                                    'on_progress' => ['text' => 'Dalam Progres', 'color' => 'warning'],
-                                                                    'done' => ['text' => 'Selesai', 'color' => 'success'],
-                                                                    'returned' => ['text' => 'Dikembalikan', 'color' => 'info'],
-                                                                    'broken' => ['text' => 'Rusak', 'color' => 'danger']
+                                                                    'received' => [
+                                                                        'text' => 'Masuk',
+                                                                        'color' => 'secondary',
+                                                                    ],
+                                                                    'on_progress' => [
+                                                                        'text' => 'Dalam Progres',
+                                                                        'color' => 'warning',
+                                                                    ],
+                                                                    'done' => [
+                                                                        'text' => 'Selesai',
+                                                                        'color' => 'success',
+                                                                    ],
+                                                                    'returned' => [
+                                                                        'text' => 'Dikembalikan',
+                                                                        'color' => 'info',
+                                                                    ],
+                                                                    'broken' => [
+                                                                        'text' => 'Rusak',
+                                                                        'color' => 'danger',
+                                                                    ],
                                                                 ][$result->status];
                                                             @endphp
-                                                            <span class="badge bg-{{ $status['color'] }}">{{ $status['text'] }}</span>
+                                                            <span
+                                                                class="badge bg-{{ $status['color'] }}">{{ $status['text'] }}</span>
                                                         </td>
                                                     </tr>
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
-                                    <a href="{{ route('inventories.edit', $result->id) }}" class="btn w-100 btn-primary">Edit</a>
+                                    <a href="{{ route('inventories.edit', $result) }}"
+                                        class="btn w-100 btn-primary">Edit</a>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="card">

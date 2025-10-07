@@ -36,7 +36,12 @@ class InventoryController extends Controller
         $locations = Location::all();
 
         return view('inventory.index', compact(
-            'inventories', 'locations', 'search', 'location_id', 'start', 'end'
+            'inventories',
+            'locations',
+            'search',
+            'location_id',
+            'start',
+            'end'
         ));
     }
 
@@ -46,13 +51,18 @@ class InventoryController extends Controller
         return view('inventory.create', compact('locations'));
     }
 
+    public function show(Inventory $inventory)
+    {
+        return view('inventory.show', compact('inventory'));
+    }
+
     public function store(InventoryRequest $request)
     {
         $request->validated();
 
         Inventory::create($request->all());
 
-        return redirect()->route('inventories.index')->with('success', 'Inventory created successfully.');
+        return redirect()->route('inventories.index')->with('success', 'Data inventori berhasil ditambahkan.');
     }
 
     public function edit(Inventory $inventory)
@@ -67,13 +77,13 @@ class InventoryController extends Controller
 
         $inventory->update($request->all());
 
-        return redirect()->route('inventories.index')->with('success', 'Inventory updated successfully.');
+        return redirect()->route('inventories.index')->with('success', 'Data inventori berhasil diperbarui.');
     }
 
     public function destroy(Inventory $inventory)
     {
         $inventory->delete();
-        return redirect()->route('inventories.index')->with('success', 'Inventory deleted successfully.');
+        return redirect()->route('inventories.index')->with('success', 'Data inventori berhasil dihapus.');
     }
 
 
@@ -81,6 +91,7 @@ class InventoryController extends Controller
     {
         $start = $request->input('start_date');
         $end = $request->input('end_date');
+        $location_id = $request->input('location_id');
 
         $query = Inventory::with('location');
 
@@ -88,12 +99,18 @@ class InventoryController extends Controller
             $query->whereDate('date_in', '>=', $start)->whereDate('date_in', '<=', $end);
         }
 
+        if ($location_id) {
+            $query->where('location_id', $location_id);
+        }
+
         $inventories = $query->latest()->get();
+        $location = $location_id ? Location::find($location_id) : null;
 
         return view('inventory.print', [
             'inventories' => $inventories,
             'start' => $start ? date('d-m-Y', strtotime($start)) : null,
-            'end' => $end ? date('d-m-Y', strtotime($end)) : null
+            'end' => $end ? date('d-m-Y', strtotime($end)) : null,
+            'location' => $location
         ]);
     }
 
@@ -101,7 +118,10 @@ class InventoryController extends Controller
     {
         $start = $request->input('start_date');
         $end = $request->input('end_date');
+        $location_id = $request->input('location_id');
 
-        return Excel::download(new InventoriesExport($start, $end), 'Laporan Inventori.xlsx');
+        return Excel::download(
+            new InventoriesExport($start, $end, $location_id),'Laporan Inventori.xlsx'
+        );
     }
 }

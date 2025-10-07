@@ -23,6 +23,7 @@ class InventoryFactory extends Factory
             'name' => fake()->word(),
             'location_id' => Location::factory(),
             'serial_number' => strtoupper(Str::random(12)),
+            'inventory_number' => strtoupper(Str::random(12)),
             'date_in' => fake()->date(),
             'date_out' => fake()->date(),
             'pic' => fake()->name(),

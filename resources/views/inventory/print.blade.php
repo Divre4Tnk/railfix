@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Mantis - Print Inventory</title>
+    <title>Railfix - Print Inventory</title>
     <style>
         .text-center {
             text-align: center;
@@ -12,7 +13,9 @@
         .table {
             width: 100%
         }
-        h2, h4, p {
+        h2,
+        h4,
+        p {
             margin-bottom: .5rem !important;
             margin-top: 0 !important;
         }
@@ -35,6 +38,17 @@
                 <td>Sampai tanggal</td>
                 <td>: {{ $end }}</td>
             </tr>
+            @if ($location)
+                <tr>
+                    <td>Lokasi</td>
+                    <td>: {{ $location->name }}</td>
+                </tr>
+            @else
+                <tr>
+                    <td>Lokasi</td>
+                    <td>: Semua Lokasi</td>
+                </tr>
+            @endif
         </table>
     @endif
     <table class="table" border="1" cellspacing="0">
@@ -71,9 +85,9 @@
                             $status = [
                                 'received' => ['text' => 'Masuk'],
                                 'on_progress' => ['text' => 'Dalam Progres'],
-                                'done' => ['text' => 'Selesai',],
+                                'done' => ['text' => 'Selesai'],
                                 'returned' => ['text' => 'Dikembalikan'],
-                                'broken' => ['text' => 'Rusak']
+                                'broken' => ['text' => 'Rusak'],
                             ][$inventory->status];
                         @endphp
                         {{ $status['text'] }}

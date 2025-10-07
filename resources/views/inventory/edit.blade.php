@@ -31,11 +31,11 @@
 
         <div class="card">
             <div class="card-body">
-                <form action="{{ route('inventories.update', $inventory->id) }}" method="post" id="form-update">
+                <form action="{{ route('inventories.update', $inventory) }}" method="post" id="form-update">
                     @csrf
                     @method('put')
                     <div class="row">
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label class="form-label">Nama Barang<span class="text-danger">*</span></label>
                             <input type="text" class="form-control  @error('name') is-invalid @enderror" placeholder="Ex: Printer Epson L3210" name="name" value="{{ $inventory->name ?? old('name') }}">
                             @error('name')
@@ -44,10 +44,19 @@
                                 </small>
                             @enderror
                         </div>
-                        <div class="form-group col-md-6">
+                        <div class="form-group col-md-4">
                             <label class="form-label">Serial Number<span class="text-danger">*</span></label>
                             <input type="text" class="form-control  @error('serial_number') is-invalid @enderror" placeholder="Ex: 12345678" name="serial_number" value="{{ $inventory->serial_number ?? old('serial_number') }}">
                             @error('serial_number')
+                                <small class="text-danger mt-1" role="alert">
+                                    {{ $message }}
+                                </small>
+                            @enderror
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="form-label">Nomor Inventaris<span class=""></span></label>
+                            <input type="text" class="form-control  @error('inventory_number') is-invalid @enderror" placeholder="Ex: 12345678" name="inventory_number" value="{{ $inventory->inventory_number ?? old('inventory_number') }}">
+                            @error('inventory_number')
                                 <small class="text-danger mt-1" role="alert">
                                     {{ $message }}
                                 </small>
