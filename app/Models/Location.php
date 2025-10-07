@@ -36,8 +36,8 @@ class Location extends Model
         });
     }
 
-    public function getRouteKeyName()
-    {
-        return 'id';
-    }
+    // public function getRouteKeyName()
+    // {
+    //     return 'id';
+    // }
 }
