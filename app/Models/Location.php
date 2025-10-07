@@ -38,6 +38,6 @@ class Location extends Model
 
     public function getRouteKeyName()
     {
-        return 'slug';
+        return 'id';
     }
 }

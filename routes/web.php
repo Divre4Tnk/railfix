@@ -28,7 +28,7 @@ Route::middleware('auth')->group(function () {
     Route::get('inventories/print', [InventoryController::class, 'print'])->name('inventories.print');
     Route::get('inventories/export', [InventoryController::class, 'export'])->name('inventories.export');
     Route::resource('inventories', InventoryController::class)->names('inventories');
-    Route::get('inventories/{inventory:code}', [InventoryController::class, 'show'])->name('inventories.show');
+    Route::get('inventories/{inventory}', [InventoryController::class, 'show'])->name('inventories.show');
 
     Route::resource('admin', AdminController::class)->except('show')->names('admin');
     Route::get('/find', [FindController::class, 'index'])->name('find.index');

@@ -62,6 +62,6 @@ class Inventory extends Model
 
     public function getRouteKeyName()
     {
-        return 'uuid';
+        return 'id';
     }
 }
