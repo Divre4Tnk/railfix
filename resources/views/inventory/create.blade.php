@@ -151,15 +151,27 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">Keterangan</label>
-                        <textarea class="form-control  @error('description') is-invalid @enderror" placeholder="Masukkan Keterangan"
-                            name="description" rows="4">{{ old('description') }}</textarea>
-                        @error('description')
-                            <small class="text-danger mt-1" role="alert">
-                                {{ $message }}
-                            </small>
-                        @enderror
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="form-label">Kendala</label>
+                            <textarea class="form-control  @error('description') is-invalid @enderror" placeholder="Masukkan kendala..."
+                                name="description" rows="4">{{ old('description') }}</textarea>
+                            @error('description')
+                                <small class="text-danger mt-1" role="alert">
+                                    {{ $message }}
+                                </small>
+                            @enderror
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="form-label">Tindak Perbaikan</label>
+                            <textarea class="form-control  @error('perbaikan') is-invalid @enderror" placeholder="Masukkan tindak perbaikan..."
+                                name="perbaikan" rows="4">{{ old('perbaikan') }}</textarea>
+                            @error('perbaikan')
+                                <small class="text-danger mt-1" role="alert">
+                                    {{ $message }}
+                                </small>
+                            @enderror
+                        </div>
                     </div>
                 </form>
             </div>

@@ -57,7 +57,7 @@ class InventoriesExport implements FromView, WithEvents, WithStyles
         ]);
 
         if ($this->start != null || $this->end != null) {
-            $sheet->getStyle('A8:K8')->applyFromArray([
+            $sheet->getStyle('A8:L8')->applyFromArray([
                 'font' => ['bold' => true],
                 'alignment' => [
                     'horizontal' => 'center',
@@ -65,7 +65,7 @@ class InventoriesExport implements FromView, WithEvents, WithStyles
                 ]
             ]);
         } else {
-            $sheet->getStyle('A5:K5')->applyFromArray([
+            $sheet->getStyle('A5:L5')->applyFromArray([
                 'font' => ['bold' => true],
                 'alignment' => [
                     'horizontal' => 'center',
@@ -83,14 +83,14 @@ class InventoriesExport implements FromView, WithEvents, WithStyles
             AfterSheet::class => function (AfterSheet $event) {
                 $sheet = $event->sheet;
 
-                foreach (range('A', 'K') as $column) {
+                foreach (range('A', 'L') as $column) {
                     $sheet->getColumnDimension($column)->setAutoSize(true);
                 }
 
                 if ($this->start !== null || $this->end !== null) {
-                    $cellRange = 'A8:K' . $sheet->getHighestRow();
+                    $cellRange = 'A8:L' . $sheet->getHighestRow();
                 } else {
-                    $cellRange = 'A5:K' . $sheet->getHighestRow();
+                    $cellRange = 'A5:L' . $sheet->getHighestRow();
                 }
 
                 $sheet->getStyle($cellRange)->applyFromArray([

@@ -63,7 +63,8 @@
                 <th class="text-center">Nomor Telepon</th>
                 <th class="text-center">Masuk</th>
                 <th class="text-center">Keluar</th>
-                <th class="text-center">Keterangan</th>
+                <th class="text-center">Kendala</th>
+                <th class="text-center">Tindak Perbaikan</th>
                 <th class="text-center">Status</th>
             </tr>
         </thead>
@@ -80,6 +81,7 @@
                     <td class="text-center">{{ $inventory->date_in->format('d-m-Y') }}</td>
                     <td class="text-center">{{ $inventory->date_out ? $inventory->date_out->format('d-m-Y') : '-' }}</td>
                     <td>{{ $inventory->description }}</td>
+                    <td>{{ $inventory->perbaikan }}</td>
                     <td class="text-center">
                         @php
                             $status = [

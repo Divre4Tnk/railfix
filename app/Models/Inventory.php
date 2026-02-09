@@ -27,6 +27,7 @@ class Inventory extends Model
         'phone',
         'status',
         'description',
+        'perbaikan'
     ];
 
     public $casts = [
@@ -60,8 +61,8 @@ class Inventory extends Model
         return $this->hasMany(Notification::class);
     }
 
-    // public function getRouteKeyName()
-    // {
-    //     return 'id';
-    // }
+    public function getRouteKeyName()
+    {
+        return 'uuid';
+    }
 }

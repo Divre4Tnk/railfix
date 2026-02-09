@@ -30,6 +30,7 @@ class InventoryFactory extends Factory
             'phone' => fake()->phoneNumber(),
             'status' => fake()->randomElement(['received', 'on_progress', 'done', 'returned', 'broken']),
             'description' => fake()->paragraph(),
+            'perbaikan' => fake()->paragraph(),
         ];
     }
 }

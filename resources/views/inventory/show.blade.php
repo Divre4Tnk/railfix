@@ -119,17 +119,33 @@
 
                     <!-- Right Column - Status & Description -->
                     <div class="col-md-6">
-                        <h6 class="d-flex align-items-center mb-3">
-                            <i class="bx bx-info-circle text-primary me-2"></i>
-                            Keterangan :
-                        </h6>
+                        <div class="mb-4">
+                            <h6 class="d-flex align-items-center mb-3">
+                                <i class="bx bx-info-circle text-primary me-2"></i>
+                                Kendala :
+                            </h6>
 
-                        <div class="border rounded p-3 bg-light">
-                            @if ($inventory->description)
-                                {{ $inventory->description }}
-                            @else
-                                <span class="text-muted">Tidak ada keterangan</span>
-                            @endif
+                            <div class="border rounded p-3 bg-light">
+                                @if ($inventory->description)
+                                    {{ $inventory->description }}
+                                @else
+                                    <span class="text-muted">Tidak ada kendala</span>
+                                @endif
+                            </div>
+                        </div>
+                        <div>
+                            <h6 class="d-flex align-items-center mb-3">
+                                <i class="bx bx-info-circle text-primary me-2"></i>
+                                Tindak Perbaikan :
+                            </h6>
+
+                            <div class="border rounded p-3 bg-light">
+                                @if ($inventory->perbaikan)
+                                    {{ $inventory->perbaikan }}
+                                @else
+                                    <span class="text-muted">Tidak ada tindak perbaikan</span>
+                                @endif
+                            </div>
                         </div>
                     </div>
                 </div>

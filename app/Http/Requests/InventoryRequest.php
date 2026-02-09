@@ -32,6 +32,7 @@ class InventoryRequest extends FormRequest
             'phone' => 'nullable|string',
             'status' => 'required|in:received,on_progress,done,returned,broken',
             'description' => 'nullable|string',
+            'perbaikan' => 'nullable|string',
         ];
     }
 }
