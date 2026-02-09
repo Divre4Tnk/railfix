@@ -136,14 +136,14 @@
                         <div>
                             <h6 class="d-flex align-items-center mb-3">
                                 <i class="bx bx-info-circle text-primary me-2"></i>
-                                Tindak Perbaikan :
+                                Tindak Lanjut :
                             </h6>
 
                             <div class="border rounded p-3 bg-light">
                                 @if ($inventory->perbaikan)
                                     {{ $inventory->perbaikan }}
                                 @else
-                                    <span class="text-muted">Tidak ada tindak perbaikan</span>
+                                    <span class="text-muted">Tidak ada tindak lanjut</span>
                                 @endif
                             </div>
                         </div>

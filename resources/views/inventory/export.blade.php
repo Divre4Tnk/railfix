@@ -28,7 +28,7 @@
             <th class="text-center">Masuk</th>
             <th class="text-center">Keluar</th>
             <th class="text-center">Kendala</th>
-            <th class="text-center">Tindak Perbaikan</th>
+            <th class="text-center">Tindak Lanjut</th>
             <th class="text-center">Status</th>
         </tr>
     </thead>

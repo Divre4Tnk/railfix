@@ -163,8 +163,8 @@
                             @enderror
                         </div>
                         <div class="form-group col-md-6">
-                            <label class="form-label">Tindak Perbaikan</label>
-                            <textarea class="form-control  @error('perbaikan') is-invalid @enderror" placeholder="Masukkan tindak perbaikan..."
+                            <label class="form-label">Tindak Lanjut</label>
+                            <textarea class="form-control  @error('perbaikan') is-invalid @enderror" placeholder="Masukkan tindak lanjut..."
                                 name="perbaikan" rows="4">{{ old('perbaikan') }}</textarea>
                             @error('perbaikan')
                                 <small class="text-danger mt-1" role="alert">
