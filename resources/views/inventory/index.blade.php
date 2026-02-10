@@ -115,10 +115,10 @@
                                                 <span class="badge rounded-pill bg-{{ $status['color'] }}">{{ $status['text'] }}</span>
                                             </td>
                                             <td class="text-center">
-                                                <a href="{{ route('inventories.show', $inventory) }}" class="btn btn-sm btn-secondary">
+                                                <a href="{{ route('inventories.show', $inventory->id) }}" class="btn btn-sm btn-secondary">
                                                     <i class="ti ti-eye"></i>
                                                 </a>
-                                                <a href="{{ route('inventories.edit', $inventory) }}" class="btn btn-sm btn-warning">
+                                                <a href="{{ route('inventories.edit', $inventory->id) }}" class="btn btn-sm btn-warning">
                                                     <i class="ti ti-edit"></i>
                                                 </a>
                                                 <form id="delete-form-{{ $inventory->id }}" action="{{ route('inventories.destroy', $inventory) }}" method="POST"
