@@ -61,8 +61,8 @@ class Inventory extends Model
         return $this->hasMany(Notification::class);
     }
 
-    public function getRouteKeyName()
-    {
-        return 'uuid';
-    }
+    // public function getRouteKeyName()
+    // {
+    //     return 'uuid';
+    // }
 }
