@@ -121,7 +121,7 @@
                                                 <a href="{{ route('inventories.edit', $inventory->id) }}" class="btn btn-sm btn-warning">
                                                     <i class="ti ti-edit"></i>
                                                 </a>
-                                                <form id="delete-form-{{ $inventory->id }}" action="{{ route('inventories.destroy', $inventory) }}" method="POST"
+                                                <form id="delete-form-{{ $inventory->id }}" action="{{ route('inventories.destroy', $inventory->id) }}" method="POST"
                                                     class="d-inline">
                                                     @csrf
                                                     @method('DELETE')
